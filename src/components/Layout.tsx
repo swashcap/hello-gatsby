@@ -11,9 +11,15 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({
   children,
   ...rest
 }) => (
-  <div className={clsx('center mw8 ph3', className)} {...rest}>
-    <Header />
-    <main>{children}</main>
-    <Footer />
+  <div
+    className={clsx('center flex flex-column mw8', className)}
+    style={{minHeight: '100vh'}}
+    {...rest}
+  >
+    <Header className="mb2 ph3" />
+    <main className="mb2 ph3" style={{flexGrow: 2}}>
+      {children}
+    </main>
+    <Footer className="ph3" />
   </div>
 );

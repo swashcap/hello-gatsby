@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import {graphql, useStaticQuery} from 'gatsby';
+import {Link, graphql, useStaticQuery} from 'gatsby';
 
 export type HeaderProps = React.HTMLAttributes<HTMLDivElement>;
 
@@ -9,7 +9,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   ...rest
 }) => {
   const query = useStaticQuery<{
-    site?: {
+    site: {
       siteMetadata: {
         title: string;
       };
@@ -25,8 +25,14 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   `);
 
   return (
-    <header className={clsx(className)} role="banner" {...rest}>
-      {query.site?.siteMetadata.title}
+    <header
+      className={clsx('b--black-20 bb', className)}
+      role="banner"
+      {...rest}
+    >
+      <Link className="color-inherit dib dim pv2" rel="home" to="/">
+        {query.site?.siteMetadata.title}
+      </Link>
     </header>
   );
 };
