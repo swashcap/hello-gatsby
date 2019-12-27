@@ -5,5 +5,9 @@
  */
 
 module.exports = {
+  polyfill: false,
   plugins: ['gatsby-plugin-typescript'],
+  siteMetadata: {
+    title: 'Hello, Gatsby!',
+  },
 };
