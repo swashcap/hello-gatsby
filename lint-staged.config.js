@@ -1,3 +1,3 @@
 module.exports = {
-  '*.{js,jsx,json,md}': ['npm run format', 'git add'],
+  '*.{js,jsx,json,md,ts,tsx}': ['prettier --write', 'git add'],
 };
