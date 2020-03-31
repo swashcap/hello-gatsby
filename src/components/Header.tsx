@@ -26,11 +26,11 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 
   return (
     <header
-      className={clsx('b--black-20 bb', className)}
+      className={clsx('border-b border-gray-500', className)}
       role="banner"
       {...rest}
     >
-      <Link className="color-inherit dib dim pv2" rel="home" to="/">
+      <Link className="inline-block py-2 underline" rel="home" to="/">
         {query.site?.siteMetadata.title}
       </Link>
     </header>

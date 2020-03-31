@@ -38,6 +38,17 @@ module.exports = {
       },
       resolve: 'gatsby-plugin-mdx',
     },
+
+    /**
+     * Customize PostCSS
+     * {@link https://www.gatsbyjs.org/docs/post-css/}
+     */
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {
+        postCssPlugins: [require('postcss-preset-env'), require('tailwindcss')],
+      },
+    },
   ],
   siteMetadata: {
     title: 'Hello, Gatsby!',
