@@ -16,15 +16,15 @@
   "dependencies": {
     "clsx": "^1.1.0",
     "gatsby": "^2.18.12",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
-    "@types/react": "^16.9.17",
+    "@types/react": "^16.9.29",
     "gatsby-plugin-mdx": "^1.0.64",
     "gatsby-plugin-typescript": "^2.1.23",
     "gatsby-source-filesystem": "^2.1.43",
