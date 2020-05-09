@@ -12,7 +12,7 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({
   ...rest
 }) => (
   <div className={clsx('flex flex-col min-h-screen', className)} {...rest}>
-    <Header className="mb-3 px-3" />
+    <Header className="mb-3 px-1" />
     <main className="flex-grow mb-3 px-3">{children}</main>
     <Footer className="px-3" />
   </div>

@@ -1,7 +1,5 @@
 const path = require('path');
 
-const newsPath = path.join(__dirname, 'src/news');
-
 /**
  * Configure your Gatsby site with this file.
  *
@@ -14,8 +12,8 @@ module.exports = {
     'gatsby-plugin-typescript',
     {
       options: {
-        name: 'news',
-        path: newsPath,
+        name: 'pages',
+        path: path.join(__dirname, 'src/pages'),
       },
       resolve: 'gatsby-source-filesystem',
     },
@@ -24,7 +22,7 @@ module.exports = {
         options: {
           extensions: ['.mdx', '.md'],
         },
-        path: newsPath,
+        path: path.join(__dirname, 'src/pages'),
       },
       resolve: 'gatsby-plugin-page-creator',
     },
@@ -51,6 +49,16 @@ module.exports = {
     },
   ],
   siteMetadata: {
+    menuLinks: [
+      {
+        link: '/news/',
+        name: 'News',
+      },
+      {
+        link: '/about/',
+        name: 'About',
+      },
+    ],
     title: 'Hello, Gatsby!',
   },
 };

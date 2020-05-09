@@ -11,6 +11,10 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   const query = useStaticQuery<{
     site: {
       siteMetadata: {
+        menuLinks: {
+          link: string;
+          name: string;
+        }[];
         title: string;
       };
     } | null;
@@ -18,6 +22,10 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
     {
       site {
         siteMetadata {
+          menuLinks {
+            link
+            name
+          }
           title
         }
       }
@@ -26,13 +34,27 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 
   return (
     <header
-      className={clsx('border-b border-gray-500', className)}
+      className={clsx(
+        'border-b border-gray-500 flex justify-between',
+        className
+      )}
       role="banner"
       {...rest}
     >
-      <Link className="inline-block py-2 underline" rel="home" to="/">
+      <Link className="inline-block p-2 underline" rel="home" to="/">
         {query.site?.siteMetadata.title}
       </Link>
+      <nav>
+        <ul className="flex">
+          {query.site?.siteMetadata.menuLinks.map(({link, name}) => (
+            <li key={link}>
+              <Link className="inline-block p-2 underline" to={link}>
+                {name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
   );
 };
