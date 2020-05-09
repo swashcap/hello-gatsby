@@ -28,6 +28,9 @@ module.exports = {
     },
     {
       options: {
+        defaultLayouts: {
+          default: require.resolve('./src/components/Layout.tsx'),
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-transformer-remark',

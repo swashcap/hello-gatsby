@@ -6,7 +6,7 @@ import {Header} from './Header';
 
 export type LayoutProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Layout: React.FunctionComponent<LayoutProps> = ({
+const Layout: React.FunctionComponent<LayoutProps> = ({
   className,
   children,
   ...rest
@@ -17,3 +17,5 @@ export const Layout: React.FunctionComponent<LayoutProps> = ({
     <Footer className="px-3" />
   </div>
 );
+
+export default Layout;
