@@ -8,15 +8,24 @@ export const Footer: React.FunctionComponent<FooterProps> = ({
   ...rest
 }) => (
   <footer
-    className={clsx('border-gray-500 border-t py-2', className)}
+    className={clsx('border-gray-300 border-t py-3', className)}
     role="contentinfo"
     {...rest}
   >
-    <small className="f6 lh-copy">
+    <small className="text-sm text-gray-700">
       An experimental site created with{' '}
-      <a className="inline-block underline" href="https://www.gatsbyjs.org">
+      <a className="underline" href="https://www.gatsbyjs.org">
         Gatsby
       </a>
+      . Source code{' '}
+      <a
+        aria-label="This site's source code on GitHub"
+        className="underline"
+        href="https://github.com/swashcap/hello-gatsby"
+      >
+        on GitHub
+      </a>
+      .
     </small>
   </footer>
 );
