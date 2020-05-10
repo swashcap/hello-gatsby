@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link, graphql} from 'gatsby';
 
-import Layout from '../../components/Layout';
+import Layout from '../../components/internal/Layout';
 
 export interface NewsIndexProps {
   data: Readonly<{

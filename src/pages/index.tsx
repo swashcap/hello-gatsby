@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Layout from '../components/Layout';
-import {Anchor, Link} from '../components/Anchor';
-import {Code} from '../components/Code';
-import {Heading} from '../components/Heading';
+import Layout from '../components/internal/Layout';
+import {Anchor, Link} from '../components/internal/Anchor';
+import {Code} from '../components/internal/Code';
+import {Heading} from '../components/internal/Heading';
 
 export default () => (
   <Layout>
