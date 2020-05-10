@@ -8,19 +8,22 @@ export const Footer: React.FunctionComponent<FooterProps> = ({
   ...rest
 }) => (
   <footer
-    className={clsx('border-gray-300 border-t py-3', className)}
+    className={clsx('border-gray-300 border-t px-4 py-3', className)}
     role="contentinfo"
     {...rest}
   >
-    <small className="text-sm text-gray-700">
+    <small className="block leading-snug text-sm text-gray-700">
       An experimental site created with{' '}
-      <a className="underline" href="https://www.gatsbyjs.org">
+      <a
+        className="focus:text-blue-800 hover:text-blue-800 underline"
+        href="https://www.gatsbyjs.org"
+      >
         Gatsby
       </a>
       . Source code{' '}
       <a
         aria-label="This site's source code on GitHub"
-        className="underline"
+        className="focus:text-blue-800 hover:text-blue-800 underline"
         href="https://github.com/swashcap/hello-gatsby"
       >
         on GitHub

@@ -54,12 +54,12 @@ module.exports = {
   siteMetadata: {
     menuLinks: [
       {
-        link: '/news/',
-        name: 'News',
-      },
-      {
         link: '/about/',
         name: 'About',
+      },
+      {
+        link: '/news/',
+        name: 'News',
       },
     ],
     title: 'Hello, Gatsby!',

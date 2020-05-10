@@ -35,20 +35,27 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   return (
     <header
       className={clsx(
-        'border-b border-gray-500 flex justify-between',
+        'border-b border-gray-300 flex justify-between px-2',
         className
       )}
       role="banner"
       {...rest}
     >
-      <Link className="inline-block p-2 underline" rel="home" to="/">
+      <Link
+        className="focus:text-blue-800 hover:text-blue-800 inline-block px-2 py-3"
+        rel="home"
+        to="/"
+      >
         {query.site?.siteMetadata.title}
       </Link>
       <nav>
         <ul className="flex">
           {query.site?.siteMetadata.menuLinks.map(({link, name}) => (
             <li key={link}>
-              <Link className="inline-block p-2 underline" to={link}>
+              <Link
+                className="focus:text-blue-800 hover:text-blue-800 inline-block px-2 py-3"
+                to={link}
+              >
                 {name}
               </Link>
             </li>
