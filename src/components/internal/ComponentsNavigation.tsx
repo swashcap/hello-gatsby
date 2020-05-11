@@ -21,6 +21,9 @@ export const ComponentsNavigation: React.FC<ComponentsNavigationProps> = ({
         };
       }>;
     };
+    site: {
+      pathPrefix: string;
+    };
   }>(graphql`
     {
       allMdx(
@@ -36,6 +39,9 @@ export const ComponentsNavigation: React.FC<ComponentsNavigationProps> = ({
           }
         }
       }
+      site {
+        pathPrefix
+      }
     }
   `);
 
@@ -47,7 +53,7 @@ export const ComponentsNavigation: React.FC<ComponentsNavigationProps> = ({
       <ul>
         {result.allMdx.nodes.map(({fields: {slug}, frontmatter: {title}}) => (
           <li key={slug}>
-            <Link to={slug}>{title}</Link>
+            <Link to={`${result.site.pathPrefix}${slug}`}>{title}</Link>
           </li>
         ))}
       </ul>
