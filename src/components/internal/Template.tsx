@@ -8,6 +8,7 @@ import {ComponentsNavigation} from './ComponentsNavigation';
 import {Heading} from './Heading';
 import {MethodsTable} from './MethodsTable';
 import {PropsTable} from './PropsTable';
+import {Knobs} from './Knobs';
 
 export interface TemplateProps {
   data: Readonly<{
@@ -17,6 +18,7 @@ export interface TemplateProps {
         docgen: string;
       }>;
       frontmatter: Readonly<{
+        description?: string;
         title: string;
       }>;
       tableOfContents: Readonly<{
@@ -38,7 +40,7 @@ export default class Template extends React.Component<TemplateProps> {
         mdx: {
           body,
           fields: {docgen},
-          frontmatter: {title},
+          frontmatter: {description, title},
           tableOfContents,
         },
       },
@@ -72,6 +74,12 @@ export default class Template extends React.Component<TemplateProps> {
                 </div>
               </nav>
               <div className="px-3 w-full md:w-2/3 lg:w-3/4">
+                {!!description && (
+                  <p className="leading-snug mb-8 mt-0 text-xl">
+                    {description}
+                  </p>
+                )}
+                <Knobs />
                 <MDXRenderer>{body}</MDXRenderer>
                 <Heading id="component-api" variant={2}>
                   Component API
@@ -84,17 +92,18 @@ export default class Template extends React.Component<TemplateProps> {
                     <PropsTable className="my-4" props={parsedDocgen.props} />
                   </>
                 )}
-                {!!parsedDocgen.methods && (
-                  <>
-                    <Heading id="methods" variant={3}>
-                      Methods
-                    </Heading>
-                    <MethodsTable
-                      className="my-4"
-                      methods={parsedDocgen.methods}
-                    />
-                  </>
-                )}
+                {Array.isArray(parsedDocgen.methods) &&
+                  !!parsedDocgen.methods.length && (
+                    <>
+                      <Heading id="methods" variant={3}>
+                        Methods
+                      </Heading>
+                      <MethodsTable
+                        className="my-4"
+                        methods={parsedDocgen.methods}
+                      />
+                    </>
+                  )}
               </div>
             </div>
           </main>
@@ -112,6 +121,7 @@ export const query = graphql`
         docgen
       }
       frontmatter {
+        description
         title
       }
       tableOfContents(maxDepth: 2)
