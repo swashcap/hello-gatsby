@@ -39,6 +39,7 @@
     "lint-staged": "^10.2.2",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^2.0.5",
+    "react-docgen-typescript": "^1.16.4",
     "tailwindcss": "^1.4.5",
     "typescript": "^3.8.3"
   },

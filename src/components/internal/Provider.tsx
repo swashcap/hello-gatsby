@@ -1,10 +1,9 @@
 import React from 'react';
 import clsx from 'clsx';
 import {MDXProvider, MDXProviderComponentsProp} from '@mdx-js/react';
-import {Language} from 'prism-react-renderer';
 
 import {Anchor} from './Anchor';
-import {Button} from '../external/Button';
+import Button from '../external/Button';
 import {CodeBlock} from './CodeBlock';
 import {Heading} from './Heading';
 

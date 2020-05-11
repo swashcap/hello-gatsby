@@ -2,14 +2,18 @@ import React from 'react';
 import {MDXRenderer} from 'gatsby-plugin-mdx';
 import {graphql} from 'gatsby';
 
+import Layout from './Layout';
 import {Anchor} from './Anchor';
 import {Heading} from './Heading';
-import Layout from './Layout';
+import {PropsTable} from './PropsTable';
 
 export interface TemplateProps {
   data: Readonly<{
     mdx: Readonly<{
       body: string;
+      fields: Readonly<{
+        docgen: string;
+      }>;
       frontmatter: Readonly<{
         title: string;
       }>;
@@ -31,6 +35,7 @@ export default class Template extends React.Component<TemplateProps> {
       data: {
         mdx: {
           body,
+          fields: {docgen},
           frontmatter: {title},
           tableOfContents,
         },
@@ -55,11 +60,23 @@ export default class Template extends React.Component<TemplateProps> {
                         </Anchor>
                       </li>
                     ))}
+                    <li>
+                      <Anchor className="block" href="#component-api">
+                        Component API
+                      </Anchor>
+                    </li>
                   </ul>
                 </div>
               </nav>
               <div className="px-3 w-full md:w-2/3 lg:w-3/4">
                 <MDXRenderer>{body}</MDXRenderer>
+                <Heading id="component-api" variant={2}>
+                  Component API
+                </Heading>
+                <Heading id="props" variant={3}>
+                  Props
+                </Heading>
+                <PropsTable props={JSON.parse(docgen).props} />
               </div>
             </div>
           </main>
@@ -73,6 +90,9 @@ export const query = graphql`
   query($slug: String!) {
     mdx(fields: {slug: {eq: $slug}}) {
       body
+      fields {
+        docgen
+      }
       frontmatter {
         title
       }

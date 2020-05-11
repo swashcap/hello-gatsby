@@ -16,8 +16,8 @@ export interface ButtonProps
 /**
  * Button, the base interactive element.
  */
-export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({className, variant = 'primary', ...rest}, ref) => (
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({className, variant, ...rest}, ref) => (
     <button
       className={clsx(
         'border duration-100 rounded-sm text-center transition-colors focus:shadow-xs hover:shadow-xs',
@@ -37,3 +37,11 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     />
   )
 );
+
+Button.defaultProps = {
+  variant: 'primary',
+};
+
+Button.displayName = 'Button';
+
+export default Button;

@@ -1,10 +1,24 @@
 const path = require('path');
+const reactDocgenTypeScript = require('react-docgen-typescript');
 const {createFilePath} = require('gatsby-source-filesystem');
 
 const directories = {
   components: path.join(__dirname, 'src/components/external'),
   news: path.join(__dirname, 'src/pages/news'),
 };
+
+const {parse} = reactDocgenTypeScript.withCustomConfig(
+  path.join(__dirname, 'tsconfig.json'),
+  {
+    propFilter(prop) {
+      if (prop.parent) {
+        return !prop.parent.fileName.includes('node_modules');
+      }
+
+      return true;
+    },
+  }
+);
 
 /**
  * Programmatically create pages.
@@ -40,12 +54,16 @@ exports.createPages = async ({actions: {createPage}, graphql}) => {
  */
 exports.onCreateNode = ({actions: {createNodeField}, getNode, node}) => {
   if (node.internal.type === 'Mdx') {
-    let value;
-
     if (node.fileAbsolutePath.includes(directories.news)) {
-      value = createFilePath({
+      const value = createFilePath({
         getNode,
         node,
+      });
+
+      createNodeField({
+        name: 'slug',
+        node,
+        value,
       });
     } else {
       const relativeFilePath = createFilePath({
@@ -54,13 +72,25 @@ exports.onCreateNode = ({actions: {createNodeField}, getNode, node}) => {
         node,
       });
 
-      value = `/components${relativeFilePath.replace('.readme', '')}`;
-    }
+      createNodeField({
+        name: 'slug',
+        node,
+        value: `/components${relativeFilePath.replace('.readme', '')}`,
+      });
 
-    createNodeField({
-      name: 'slug',
-      node,
-      value,
-    });
+      const parsed = parse(
+        node.fileAbsolutePath.replace('.readme.mdx', '.tsx')
+      );
+
+      createNodeField({
+        name: 'docgen',
+        node,
+        // Stringify to prevent Gatsby's aggressive GraphQL schema provision
+        value:
+          Array.isArray(parsed) && parsed.length
+            ? JSON.stringify(parsed[0])
+            : JSON.stringify(null),
+      });
+    }
   }
 };
