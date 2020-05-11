@@ -6,7 +6,7 @@ import {Heading} from './Heading';
 
 export type ComponentsNavigationProps = React.HTMLAttributes<HTMLElement>;
 
-export const CompnentsNavigation: React.FC<ComponentsNavigationProps> = ({
+export const ComponentsNavigation: React.FC<ComponentsNavigationProps> = ({
   className,
   ...rest
 }) => {
