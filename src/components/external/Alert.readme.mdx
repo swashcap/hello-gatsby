@@ -1,0 +1,105 @@
+---
+title: Alert
+---
+
+<p className="leading-snug py-4 text-xs">
+  The Alert component informs users of change in the underlying system; user interaction or a change in application state can surface the component.
+</p>
+
+Alert has three variations ensure it covers multiple interaction patterns: success, warning, and error.
+
+```tsx preview
+<div>
+  <div className="mb-3">
+    <Alert>Success</Alert>
+  </div>
+  <div className="mb-3">
+    <Alert variant="warning">Warning</Alert>
+  </div>
+  <Alert variant="error">Error</Alert>
+</div>
+```
+
+
+### Related
+
+## Usage
+
+Import the `Alert` component into a React component in your project:
+
+```tsx
+import {Alert} from 'demo-library';
+```
+
+Use `Alert` by passing children:
+
+```tsx
+import React from 'react';
+import {Alert} from 'demo-library';
+
+export const MyComponent: React.FC<any> = () => {
+  return (
+    <div>
+      <p>Uh-oh<p>
+      <Alert>
+        <strong>Warning:</strong>
+        This is a cautionary alert.
+      </Alert>
+    </div>
+  );
+}
+```
+
+## Variants
+
+`Alert` comes with three variations, which are set via the `variant` property.
+
+### Success
+
+Use to signify a positive or successful interaction. This is the default Alert.
+
+```tsx live
+<Alert variant="success">
+  <strong>Success!</strong> This is a positive alert.
+</Alert>
+```
+
+### Warning
+
+Use to indicate bring awareness of a non-critical, potentially negative information.
+
+```tsx live
+<Alert variant="warning">
+  <strong>Warning:</strong> This is a cautionary alert.
+</Alert>
+```
+
+### Error
+
+Use to convey a negative or errorful interaction or state.
+
+```tsx live
+<Alert variant="error">
+  <strong>Error!</strong> This is a negative alert.
+</Alert>
+```
+
+## Closeable
+
+Pass an `onClose` property to the `Alert` to display a close button:
+
+```tsx live
+<Alert onClose={console.log} variant="warning">
+  This alert is closeable.
+</Alert>
+```
+
+The `Alert` component has a `focusButton` method that will call `HTMLElement.focus()` on the button.
+
+## Accessibility
+
+The `Alert` component has a `role="alert"` property, which covers the WCAG requirement.
+
+### Related
+
+* ["Using the alert role" on MDN ↗](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_alert_role/)

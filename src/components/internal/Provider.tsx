@@ -2,8 +2,9 @@ import React from 'react';
 import clsx from 'clsx';
 import {MDXProvider, MDXProviderComponentsProp} from '@mdx-js/react';
 
-import {Anchor} from './Anchor';
+import Alert from '../external/Alert';
 import Button from '../external/Button';
+import {Anchor} from './Anchor';
 import {CodeBlock} from './CodeBlock';
 import {Heading} from './Heading';
 
@@ -21,7 +22,7 @@ const components: MDXProviderComponentsProp = {
       <CodeBlock
         className="my-4"
         language={language}
-        scope={{Button}}
+        scope={{Alert, Button}}
         {...rest}
       >
         {children}

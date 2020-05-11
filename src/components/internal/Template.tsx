@@ -5,6 +5,7 @@ import {graphql} from 'gatsby';
 import Layout from './Layout';
 import {Anchor} from './Anchor';
 import {Heading} from './Heading';
+import {MethodsTable} from './MethodsTable';
 import {PropsTable} from './PropsTable';
 
 export interface TemplateProps {
@@ -41,6 +42,7 @@ export default class Template extends React.Component<TemplateProps> {
         },
       },
     } = this.props;
+    const parsedDocgen = JSON.parse(docgen);
 
     return (
       <Layout main={false}>
@@ -73,10 +75,25 @@ export default class Template extends React.Component<TemplateProps> {
                 <Heading id="component-api" variant={2}>
                   Component API
                 </Heading>
-                <Heading id="props" variant={3}>
-                  Props
-                </Heading>
-                <PropsTable props={JSON.parse(docgen).props} />
+                {!!parsedDocgen.props && (
+                  <>
+                    <Heading id="props" variant={3}>
+                      Props
+                    </Heading>
+                    <PropsTable className="my-4" props={parsedDocgen.props} />
+                  </>
+                )}
+                {!!parsedDocgen.methods && (
+                  <>
+                    <Heading id="methods" variant={3}>
+                      Methods
+                    </Heading>
+                    <MethodsTable
+                      className="my-4"
+                      methods={parsedDocgen.methods}
+                    />
+                  </>
+                )}
               </div>
             </div>
           </main>
