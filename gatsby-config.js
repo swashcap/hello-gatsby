@@ -7,6 +7,11 @@ const path = require('path');
  */
 
 module.exports = {
+  /**
+   * Prefix path for GH pages.
+   * {@link https://www.gatsbyjs.org/docs/gatsby-config/#pathprefix}
+   */
+  pathPrefix: process.env.NODE_ENV === 'production' ? '/hello-gatsby' : '',
   polyfill: false,
   plugins: [
     'gatsby-plugin-typescript',
