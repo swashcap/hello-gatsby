@@ -6,15 +6,12 @@ const path = require('path');
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
-const PATH_PREFIX =
-  process.env.NODE_ENV === 'production' ? '/hello-gatsby' : '';
-
 module.exports = {
   /**
    * Prefix path for GH pages.
    * {@link https://www.gatsbyjs.org/docs/gatsby-config/#pathprefix}
    */
-  pathPrefix: PATH_PREFIX,
+  pathPrefix: process.env.NODE_ENV === 'production' ? '/hello-gatsby' : '',
   polyfill: false,
   plugins: [
     'gatsby-plugin-typescript',
@@ -69,15 +66,15 @@ module.exports = {
   siteMetadata: {
     menuLinks: [
       {
-        link: `${PATH_PREFIX}/about/`,
+        link: `/about/`,
         name: 'About',
       },
       {
-        link: `${PATH_PREFIX}/components/`,
+        link: `/components/`,
         name: 'Components',
       },
       {
-        link: `${PATH_PREFIX}/news/`,
+        link: `/news/`,
         name: 'News',
       },
     ],

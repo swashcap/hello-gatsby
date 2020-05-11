@@ -10,6 +10,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
 }) => {
   const query = useStaticQuery<{
     site: {
+      pathPrefix: string;
       siteMetadata: {
         menuLinks: {
           link: string;
@@ -21,6 +22,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
   }>(graphql`
     {
       site {
+        pathPrefix
         siteMetadata {
           menuLinks {
             link
@@ -44,7 +46,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
       <Link
         className="focus:text-blue-800 hover:text-blue-800 inline-block px-2 py-3"
         rel="home"
-        to="/"
+        to={`${query.site?.pathPrefix || ''}/`}
       >
         {query.site?.siteMetadata.title}
       </Link>
@@ -54,7 +56,7 @@ export const Header: React.FunctionComponent<HeaderProps> = ({
             <li key={link}>
               <Link
                 className="focus:text-blue-800 hover:text-blue-800 inline-block px-2 py-3"
-                to={link}
+                to={`${query.site?.pathPrefix || ''}${link}`}
               >
                 {name}
               </Link>
