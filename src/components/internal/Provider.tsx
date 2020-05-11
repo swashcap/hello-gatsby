@@ -4,6 +4,7 @@ import {MDXProvider, MDXProviderComponentsProp} from '@mdx-js/react';
 import {Language} from 'prism-react-renderer';
 
 import {Anchor} from './Anchor';
+import {Button} from '../external/Button';
 import {CodeBlock} from './CodeBlock';
 import {Heading} from './Heading';
 
@@ -18,7 +19,12 @@ const components: MDXProviderComponentsProp = {
     }
 
     return (
-      <CodeBlock className="my-4" language={language} {...rest}>
+      <CodeBlock
+        className="my-4"
+        language={language}
+        scope={{Button}}
+        {...rest}
+      >
         {children}
       </CodeBlock>
     );
@@ -29,10 +35,16 @@ const components: MDXProviderComponentsProp = {
   h4: (props) => <Heading variant={4} {...props} />,
   h5: (props) => <Heading variant={5} {...props} />,
   h6: (props) => <Heading variant={6} {...props} />,
+  ol: ({className, ...rest}) => (
+    <ol className={clsx('list-decimal my-4 pl-5', className)} {...rest} />
+  ),
   p: ({className, ...rest}) => (
     <p className={clsx('my-4', className)} {...rest} />
   ),
   pre: (props) => <div {...props} />,
+  ul: ({className, ...rest}) => (
+    <ul className={clsx('list-disc my-4 pl-5', className)} {...rest} />
+  ),
 };
 
 export interface ProviderProps {

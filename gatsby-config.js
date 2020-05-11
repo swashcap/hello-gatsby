@@ -19,6 +19,13 @@ module.exports = {
     },
     {
       options: {
+        name: 'components',
+        path: path.join(__dirname, 'src/components/external'),
+      },
+      resolve: 'gatsby-source-filesystem',
+    },
+    {
+      options: {
         options: {
           extensions: ['.mdx', '.md'],
         },
@@ -29,7 +36,7 @@ module.exports = {
     {
       options: {
         defaultLayouts: {
-          default: require.resolve('./src/components/Layout.tsx'),
+          default: require.resolve('./src/components/internal/Layout.tsx'),
         },
         gatsbyRemarkPlugins: [
           {
@@ -56,6 +63,10 @@ module.exports = {
       {
         link: '/about/',
         name: 'About',
+      },
+      {
+        link: '/components/',
+        name: 'Components',
       },
       {
         link: '/news/',

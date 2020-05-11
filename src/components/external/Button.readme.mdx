@@ -1,0 +1,94 @@
+---
+title: Button
+---
+
+<p className="leading-snug text-xl">
+  The Button is the base interactive component for{' '}
+  <em>demo-library</em>: it affords navigation, form submission, and application
+  state changes.
+</p>
+
+Three variations of Button exist to demonstrate the level of interaction: primary, secondary, and tertiary.
+
+```tsx preview
+<div className="flex items-center">
+  <div className="mr-3">
+    <Button variant="primary">Primary</Button>
+  </div>
+  <div className="mr-3">
+    <Button variant="secondary">Secondary</Button>
+  </div>
+  <Button variant="tertiary">Tertiary</Button>
+</div>
+```
+
+### Related
+
+* [Interaction and feedback ↗](#)
+* [Design specifications ↗](#)
+
+## Usage
+
+Import the `Button` component into a React component in your project:
+
+```tsx
+import {Button} from 'demo-library';
+```
+
+Use Button by passing it `children` and an `onClick` handler in your React component:
+
+```tsx
+import React from 'react'
+import {Button} from 'demo-library';
+
+export const MyComponent: React.FC<any> = () => {
+  return (
+    <Button
+      onClick={(event) => {
+        console.log('Clicked!', event)
+      }}
+    >
+      My Button
+    </Button>
+  )
+}
+```
+
+## Variants
+
+`Button` comes with three variations, set through the `variant` property:
+
+### Primary
+
+Use the primary variant for call to action, form submission, dialog or modal
+trigger.
+
+```tsx live
+<Button>Primary button</Button>
+```
+
+### Secondary
+
+```tsx live
+<Button variant="secondary">Secondary button</Button>
+```
+
+### Tertiary
+
+```tsx live
+<Button variant="tertiary">Tertiary button</Button>
+```
+
+## Accessibility
+
+The `Button` component has a `role="button`" property provided. Ensure that the
+element has the appropriate role for its use:
+
+* `role="submit"` for a form submission button
+* `role="reset"` for a form reset button
+
+### Related
+
+* ["Building Accessible Buttons with ARIA" on Deque ↗](https://www.deque.com/blog/accessible-aria-buttons/)
+* ["ARIA: button role" on MDN ↗](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/button_role/)
+
