@@ -3,6 +3,13 @@ title: Alert
 description: |
   The Alert component informs users of change in the underlying system; user
   interaction or a change in application state can surface the component.
+props:
+  - children: Success alert
+    variant: success
+  - children: Warning alert
+    variant: warning
+  - children: Error alert
+    variant: error
 ---
 
 Alert has three variations ensure it covers multiple interaction patterns: success, warning, and error.

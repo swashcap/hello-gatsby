@@ -8,7 +8,7 @@ import {ComponentsNavigation} from './ComponentsNavigation';
 import {Heading} from './Heading';
 import {MethodsTable} from './MethodsTable';
 import {PropsTable} from './PropsTable';
-import {Knobs} from './Knobs';
+import {Preview} from './Preview';
 
 export interface TemplateProps {
   data: Readonly<{
@@ -19,6 +19,12 @@ export interface TemplateProps {
       }>;
       frontmatter: Readonly<{
         description?: string;
+        props: ReadonlyArray<
+          Readonly<{
+            children: string;
+            variant: string;
+          }>
+        >;
         title: string;
       }>;
       tableOfContents: Readonly<{
@@ -40,7 +46,7 @@ export default class Template extends React.Component<TemplateProps> {
         mdx: {
           body,
           fields: {docgen},
-          frontmatter: {description, title},
+          frontmatter: {description, props, title},
           tableOfContents,
         },
       },
@@ -79,7 +85,7 @@ export default class Template extends React.Component<TemplateProps> {
                     {description}
                   </p>
                 )}
-                <Knobs />
+                <Preview props={props} />
                 <MDXRenderer>{body}</MDXRenderer>
                 <Heading id="component-api" variant={2}>
                   Component API
@@ -122,6 +128,10 @@ export const query = graphql`
       }
       frontmatter {
         description
+        props {
+          children
+          variant
+        }
         title
       }
       tableOfContents(maxDepth: 2)
