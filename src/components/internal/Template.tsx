@@ -7,6 +7,7 @@ import {Anchor} from './Anchor';
 import {Heading} from './Heading';
 import {MethodsTable} from './MethodsTable';
 import {PropsTable} from './PropsTable';
+import {CompnentsNavigation} from './ComponentsNavigation';
 
 export interface TemplateProps {
   data: Readonly<{
@@ -47,7 +48,7 @@ export default class Template extends React.Component<TemplateProps> {
     return (
       <Layout main={false}>
         <div className="flex flex-wrap -mx-3">
-          <nav className="px-3 w-full md:w-1/4 lg:w-2/12">Navigation</nav>
+          <CompnentsNavigation className="px-3 w-full md:w-1/4 lg:w-2/12" />
           <main className="px-3 w-full md:w-3/4 lg:w-10/12">
             <Heading>{title}</Heading>
             <div className="flex flex-wrap -mx-3">
